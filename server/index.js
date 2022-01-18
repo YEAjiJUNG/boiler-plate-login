@@ -64,16 +64,15 @@ app.post('/login', (req, res)=> {
                     res.cookie('x_auth', user.token)
                     .status(200)
                     .json({loginSuccess: true, userId: user._id})
-                    //쿠키에 저장된 토큰과 DB에 저장된 토큰이 계속 같은지 확인해준다.
-                    //쿠키에 저장된 토큰을 클라이언트에서 가져와 디코드시키면 userId가 나온다. 
-                    //그 userId를 가진 그 유저 DB에 이 토큰이 있다면, 인증이 가능
-
                  })
             })
         }
     })
 })
 
+//쿠키에 저장된 토큰과 DB에 저장된 토큰이 계속 같은지 확인해준다.
+//쿠키에 저장된 토큰을 클라이언트에서 가져와 디코드시키면 userId가 나온다.
+//그 userId를 가진 그 유저 DB에 이 토큰이 있다면, 인증이 가능
 app.get('/api/users/auth', auth, (req, res) => {
     //auth는 middleware -> req를 받은다음 콜백function 하기전에 중간에서 어떤 것을 해줌
     //여기까지 미들웨어를 통과해 왔다는 얘기는 인증 성공
@@ -103,3 +102,6 @@ app.get('/api/users/logout', auth, (req, res) => {
 })
 
 app.listen(port, () => console.log(`Example app listening on port ${port}`));
+
+//서버 단 작업이 끝난 후, client 폴더에 npx create-react-app으로 리액트 파일 생성
+//
