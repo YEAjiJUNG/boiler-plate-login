@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const port = 3000;
+const port = 5000;
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const { auth } = require('./middleware/auth');
@@ -100,6 +100,15 @@ app.get('/api/users/logout', auth, (req, res) => {
             })
         })
 })
+
+app.get('/api/hello', (req, res) => {
+  res.send('HelloWord!')
+})
+//cors 이슈 발생 서버는 5000, client는 3000
+//이슈 해결하기 위해 proxy를 사용한다.
+//proxy 서버 사용하는 이유: 인터넷 사용제어, 캐시를 이용해 더 빠른 인터넷, 더 나은 보안, 제한된 사이트 접근 가능
+
+
 
 app.listen(port, () => console.log(`Example app listening on port ${port}`));
 
