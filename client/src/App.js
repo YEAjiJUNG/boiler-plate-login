@@ -25,9 +25,9 @@ function App() {
           of them to render at a time
         */}
         <Routes>
-          <Route path="/LandingPage" element={<LandingPage />} />
-          <Route path="/LoginPage" element={<LoginPage />} />
-          <Route path="/RegisterPage" element={<RegisterPage />} />
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
         </Routes>
       </div>
     </Router>
