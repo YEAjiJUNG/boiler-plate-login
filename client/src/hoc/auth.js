@@ -9,12 +9,12 @@ export default function (SpecificComponent, option, adminRoute = null) {
   //false => 로그인한 유저는 출입 불가능한 페이지
 
   function AuthenticationCheck(props) {
+    const dispatch = useDispatch();
+
     useEffect(() => {
 
-      const dispatch = useDispatch();
-
       dispatch(auth()).then(res => {
-
+        console.log(res);
         //로그인 하지 않은 상태
         if(!res.payload.isAuth){
           if(option) {
@@ -25,13 +25,11 @@ export default function (SpecificComponent, option, adminRoute = null) {
           if(adminRoute && !res.payload.isAdmin) {
             props.history.push('/');
           }else{
-            if(!option){
-              props.history.push('/');
-            }
+            if(!option) props.history.push('/');
           }
         }
-      });
-    }, []);
+      })
+    }, [])
 
     return (
       <SpecificComponent />

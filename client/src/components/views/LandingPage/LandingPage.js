@@ -25,7 +25,7 @@ function LandingPage(props) {
       display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%', height: '100vh'
     }}>
       <h2>LandingPage</h2>
-      <button onclick={onClickHandler}>로그아웃</button>
+      <button onClick={onClickHandler}>로그아웃</button>
     </div>
   );
 }

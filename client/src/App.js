@@ -2,7 +2,7 @@ import './App.css';
 import {
   BrowserRouter as Router,
   Route,
-  Routes,
+  Switch,
 } from 'react-router-dom';
 import LandingPage from './components/views/LandingPage/LandingPage';
 import LoginPage from './components/views/LoginPage/LoginPage';
@@ -25,11 +25,11 @@ function App() {
           you have multiple routes, but you want only one
           of them to render at a time
         */}
-        <Routes>
-          <Route path="/" element={Auth(LandingPage, null)} />
-          <Route path="/login" element={Auth(LoginPage, false)} />
-          <Route path="/register" element={Auth(RegisterPage, false)} />
-        </Routes>
+        <Switch>
+          <Route exact path="/" component={Auth(LandingPage, null)} />
+          <Route exact path="/login" component={Auth(LoginPage, false)} />
+          <Route exact path="/register" component={Auth(RegisterPage, false)} />
+        </Switch>
       </div>
     </Router>
   );
